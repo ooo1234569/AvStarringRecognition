@@ -16,9 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from cmdb import views
+from django.conf.urls import url
+from django.conf.urls.static import static
+from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
-    path('result',views.upload)
+    path('result',views.upload),
 ]
+urlpatterns += static('/done/', document_root=settings.MEDIA_ROOT)  #加上这一行

@@ -10,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-import os
+import os,pickle,cv2
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,7 @@ SECRET_KEY = 'g^2ykxlk=*uvoh39%mz4ct-=5_3bylw647za(-tam$sod6cc39'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ '172.22.37.2','127.0.0.1']
 
 
 # Application definition
@@ -118,5 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'cmdb/../templates'),)
+# MEDIA_URL = '/media/'
+MEDIA_ROOT = r'C:\Users\bingnan\PycharmProjects\AvStarringRecognition\done\\'
+
