@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-import os,pickle,cv2
+import os,pickle,cv2,cmdb.model
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -26,7 +26,8 @@ SECRET_KEY = 'g^2ykxlk=*uvoh39%mz4ct-=5_3bylw647za(-tam$sod6cc39'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ '172.22.37.2','127.0.0.1']
+ALLOWED_HOSTS = [ '127.0.0.1']
+ALLOWED_HOSTS.append(cmdb.model.get_host_ip())
 
 
 # Application definition
