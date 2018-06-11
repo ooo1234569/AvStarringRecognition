@@ -5,17 +5,17 @@ bp=r'C:\Users\bingnan\PycharmProjects2\AvStarringRecognition\\'
 class Model(object):
     def __init__(self):
         self.face_patterns = cv2.CascadeClassifier(
-            r'C:\Users\bingnan\PycharmProjects\AvStarringRecognition\test\haarcascade_frontalface_default.xml')
+            r'./model/haarcascade_frontalface_default.xml')
         print('加载模型中')
-        kfile = open(r'C:\Users\bingnan\PycharmProjects\AvStarringRecognition\test\feature.dat', 'rb')
+        kfile = open(r'./model/feature.dat', 'rb')
         self.k = pickle.load(kfile)
-        lfile = open(r'C:\Users\bingnan\PycharmProjects\AvStarringRecognition\test\lable.dat', 'rb')
+        lfile = open(r'./model/lable.dat', 'rb')
         self.lables = pickle.load(lfile)
         print('加载模型完成')
 
     def classify(self,name):
         rr={}
-        sample_image = self.cv_read(bp+name)
+        sample_image = self.cv_read('./'+name)
         faces = self.face_patterns.detectMultiScale(sample_image, scaleFactor=1.1, minNeighbors=5, minSize=(100, 100))
         for (x, y, w, h) in faces:
             temp = sample_image[y:y + h, x:x + w]
