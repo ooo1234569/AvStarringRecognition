@@ -1,5 +1,5 @@
 import cv2,pickle,face_recognition,os,socket
-import numpy as np
+import numpy as np,platform
 m = None
 bp=r'C:\Users\bingnan\PycharmProjects2\AvStarringRecognition\\'
 class Model(object):
@@ -55,12 +55,17 @@ def classify(name):
     return m.classify(name)
 
 def get_host_ip():
-    try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect(('8.8.8.8', 80))
-        ip = s.getsockname()[0]
-    finally:
-        s.close()
+    sysstr=platform.system()
+    print(sysstr)
+    if sysstr=="Windows":
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect(('8.8.8.8', 80))
+            ip = s.getsockname()[0]
+        finally:
+            s.close()
+    else:
+        ip='39.105.55.86	'
     print(ip)
     return ip
 
