@@ -17,15 +17,14 @@ def upload(request):
     result=cmdb.model.classify(obj.name)
     dic={}
     num=1
+    print(result)
     for k in result:
-        print(k)
-        k='done\\'+k
+
+        k,url=k.split(' ')
         temp=k.replace('__1','').replace('face\\','')
-        dic['image'+str(num)]=temp
-        print(temp)
         temp2=getfanhao(os.path.basename(temp))
-        print(temp2)
         dic['l' + str(num)] = 'https://www.javbus.pw/'+temp2
+        dic['image' + str(num)]=url
         num=num+1
     return render(request, 'result.html',dic)
 

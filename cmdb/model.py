@@ -11,6 +11,7 @@ class Model(object):
         self.k = pickle.load(kfile)
         lfile = open(r'./model/lable.dat', 'rb')
         self.lables = pickle.load(lfile)
+        print(len(self.k), len(self.lables))
         print('加载模型完成')
 
     def classify(self,name):
@@ -31,11 +32,11 @@ class Model(object):
         tempname = None
         for d in dic:
             if num < 6:
-                if os.path.basename(d[0]) != tempname:
+                if os.path.basename(d[0].split(' ')[0]) != tempname:
                     rr[d[0]]=d[1]
                     print(d[0] + ":" + str(d[1]))
                     num = num + 1
-                    tempname = os.path.basename(d[0])
+                    tempname = os.path.basename(d[0].split(' ')[0])
                 else:
                     continue
             else:
