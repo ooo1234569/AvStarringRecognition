@@ -17,11 +17,9 @@ def upload(request):
     result=cmdb.model.classify(obj.name)
     dic={}
     num=1
-    print(result)
     for k in result:
-
         k,url=k.split(' ')
-        temp=k.replace('__1','').replace('face\\','')
+        temp=k.replace('__1','')
         temp2=getfanhao(os.path.basename(temp))
         dic['l' + str(num)] = 'https://www.javbus.pw/'+temp2
         dic['image' + str(num)]=url
@@ -29,10 +27,8 @@ def upload(request):
     return render(request, 'result.html',dic)
 
 def getfanhao(s):
-    print(s)
     shuzi=['0','1','2','3','4','5','6','7','8','9']
     temp=s.split('-')
-    print(temp)
     qianzhui = temp[0]
     s2 = temp[1]
     if len(temp)>2:
